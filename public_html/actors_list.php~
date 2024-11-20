@@ -1,0 +1,15 @@
+<?php
+	require_once 'login.php';
+	
+	$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+	if($con->connect_error){
+		die("Couldn't Connect to Database" . $con->connect_error);
+	}
+	
+	$actors = "SELECT actName FROM Actor ORDER BY actor";
+	
+	$actor_names = $con->query($actors);
+	
+	mysqli_close($con);
+	
+?>

@@ -1,0 +1,30 @@
+<?php
+	require_once 'login.php';
+	
+	$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+	if($con->connect_error){
+		die("Didn't Connect" . $con->connect_error);
+	}
+	echo "<BR> Connected Succesfully<BR>";
+	
+	$showall = "SELECT * FROM Movie" ;
+	$all = $con->query($showall);
+	//print_r($result);
+	echo "<table>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Price</th>
+				</tr>"
+			
+	$count = 1;
+	while ($row = $all->fetch_array(MYSQLI_ASSOC)){
+		echo "<tr>
+					<th>${row['mvID']}</th>
+					<th>${row['title']}</th>
+					<th>${row['price']}</th>
+				</tr>";
+		$count +=1;
+	}
+	echo "</table>";
+?>

@@ -1,0 +1,33 @@
+<HTML>
+  <HEAD>
+	<link href="form.css" rel="stylesheet">
+	<TITLE>First Form</TITLE>
+  </HEAD>
+  <BODY>
+	
+    <H1>PSYCG7's Movie DB</H1>
+    <H2>Now with added Funkyness</H2>
+    <FORM action="some.php">
+    	Search By Movie <BR>
+      <INPUT type="text" name="movie_search">
+      <INPUT type="submit" value="Search"> <BR> <BR>
+      Search By Actor <BR>
+      <INPUT type="text" name="actor_search">
+      <INPUT type="submit" value="Search"> <BR> <BR>
+      Add Movie <BR>
+      <INPUT type="text" name="movie_add">
+      <INPUT type="submit" value="Add"> <BR> <BR>
+      <BR>We do not want to submit this form just yet etc. <BR>
+    </FORM>
+    
+    <p><?php echo "<H1>Hello php World</H1>" ; ?></p>
+    <H1>
+    	<?php 
+    		include "table.php" ;
+    	?>
+    </H1>
+    
+    <div>Hello Again</div>
+  </BODY>
+</HTML>
+

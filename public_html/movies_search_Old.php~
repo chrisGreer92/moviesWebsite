@@ -1,0 +1,109 @@
+<HTML>
+  <HEAD>
+	<link href="form.css" rel="stylesheet">
+	<TITLE>Actor Delete</TITLE>
+	<STYLE> 
+		H2 {color: darkred;} 
+		input[type=submit] {
+ 			background:red; 
+ 			color:white;
+ 			cursor: crosshair;
+		}
+	</STYLE>
+	</HEAD>
+	<BODY>
+		<?php include "nav/nav.php" ;?>
+		<?php
+			include "phpValidation.php";
+			
+			require_once 'login.php';			
+			
+			$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+				if($con->connect_error){
+					die("Couldn't Connect to Database" . $con->connect_error);
+				}
+						
+			//If running this from table, find out what we're deleting
+			if (isset($_POST["delete_id"]) && $_POST["delete_id"] != ""){
+				$delete_id = fix_string($_POST["delete_id"]);
+	
+				$fail = validate_criteria($delete_id);
+		
+				if( $fail == "" ){
+					
+					$search = "SELECT actID FROM Movie WHERE mvID=$delete_id";
+					$search = $con->query($deletion);
+					
+					$actor_id = $con->insert_id;
+					
+					$search_actor = "SELECT * FROM Actor WHERE actID=$actor_id";
+					$search = $con->query($search_actor);
+					
+					if($search) { //If there's an actor linked, check if deleting both
+					
+						echo "<H2> Movie has an actor linked. 
+    							<BR> Would you Like to Delete Both? </H2>";
+    						
+    					echo "<FORM name=\"justMov\" id=\"justMov\" 
+								action=\"delete_mov.php\" method=\"post\">
+								<INPUT type=\"hidden\" name=\"movie_id\" 
+								value=\"$movie_id\"/>
+								<INPUT type=\"submit\" style=\"background:darkred;color:white\"
+								value=\"Just Movie\"></FORM> <BR>";
+    					
+    					echo "<FORM name=\"deleteBoth\" id=\"deleteBoth\" 
+								action=\"delete_both.php\" method=\"post\">
+								<INPUT type=\"hidden\" name=\"delete_id\" 
+								value=\"$actor_id\"/>
+								<INPUT type=\"submit\" class=\"delete\"
+								value=\"Delete Both\"></FORM>";		
+							
+								$criteria = "WHERE Actor.actID=$delete_id ";
+    							$suppress_del = 1;
+								
+								include "movie_table.php";
+						
+					}else { //If there's no actor linked, just delete movie
+						
+						$deletion = "DELETE FROM Movie WHERE actID=$delete_id";
+						$delete = $con->query($deletion);
+				
+				
+						if($delete) {
+							echo "<BR><H2> Movie Deleted Successfully</H2><BR>";
+							include "movie_table.php";
+						} else {
+    						$error = $con->error;
+							echo "<H2 style=\"color: darkred\";> Problem Deleting Movie
+							<BR>$error</H2>";					
+						}
+					}
+					
+				}else { //Will only fail here if the id isn't set
+					
+					echo "<H2> $fail </H2>"; 	
+					//mysqli_close($con);		
+					//header("Location: home.php");
+					
+				}
+			
+			
+			}elseif(isset($_POST['movie_id')) { //If chosen to just delete movie
+			
+				$deletion = "DELETE FROM Movie WHERE mv=$movie_id";
+				$delete = $con->query($deletion);
+				
+				
+				if($delete) {
+					echo "<BR><H2> Movie Deleted Successfully</H2><BR>";
+					include "movie_table.php";
+				} else {
+    				$error = $con->error;
+					echo "<H2 style=\"color: darkred\";> Problem Deleting Movie
+							<BR>$error</H2>";					
+				}
+			}
+			mysqli_close($con);
+		?>	
+	</BODY>
+</HTML>

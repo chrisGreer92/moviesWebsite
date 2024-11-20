@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta name="nav" content="max-width=10em width=100%">
+<link href="nav/nav.css" rel="stylesheet">
+</head>
+<body>
+
+<?php
+$file = $_SERVER["SCRIPT_NAME"];
+?>
+
+<div class="topnav">
+  <a href="home.php">Home
+  	<?php if (preg_match('/(hom)/',substr($file,3))){
+	echo "class=\"active\"";}?>
+  </a>
+  <a href="movies.php"
+	<?php if (preg_match('/(mov)/',substr($file,3))){
+	echo "class=\"active\"";}?>  
+  	>Movies
+  </a>
+  <a href="actors.php"
+  	<?php if (preg_match('/(act)/',substr($file,3))){
+	echo "class=\"active\"";}?>
+	>Actors
+  </a>
+  <a href="#Combined"></a>
+</div>
+
+</body>
+</html>

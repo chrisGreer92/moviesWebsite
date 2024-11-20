@@ -1,0 +1,16 @@
+<html>
+<head>
+<meta name="nav" content="max-width=10em width=100%">
+<link href="nav/nav.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+  <a href="home.php">Home</a>
+  <a class="active" href="movies.php">Movies</a>
+  <a href="Actors.php">Actors</a>
+  <a href="#Combined">Combined</a>
+</div>
+
+</body>
+</html>

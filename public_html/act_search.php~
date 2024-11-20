@@ -1,0 +1,42 @@
+<HTML>
+  <HEAD>
+	<link href="form.css" rel="stylesheet">
+	<TITLE>Actor Search</TITLE>
+	</HEAD>
+	<BODY>
+	<?php include "nav/nav_actors.php" ;?>
+	<?php
+	
+		include "phpValidation.php";
+		if (isset($_POST["actID"]) && $_POST["actID"] != "")
+			$actID = fix_string($_POST["actID"]);
+		if (isset($_POST["actName"]) && $_POST["actName"] != "")
+			$actName = fix_string($_POST["actName"]);
+		
+		$string_check = $actID . $actName;
+	
+		$fail = validate_criteria($string_check);
+		$fail .= validate_id($actID);	
+		
+		if( $fail == "" ){
+			if(!$actName) //Set the variables to defaults if not set
+				$actName = "actName";
+			if(!$actID)
+				$actID = "actID";
+			
+			$actName = "'%" . $actName . "%'";
+			//echo "<H2> $actName</H2>";
+			echo "<H2> Search Results:</H2>";
+			include "actor_table.php";
+		}
+		else{
+			echo "<H2> $fail </H2>"; //Not necessary unless header doesn't work			
+			header("Location: actors.php");
+		}
+	?>
+	<BR>
+	<form action="actors.php">
+		<input type="submit" value="New Search" />
+	</form>
+	</BODY>
+</HTML>

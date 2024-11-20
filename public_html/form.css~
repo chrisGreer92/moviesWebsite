@@ -1,0 +1,107 @@
+/*CSS for the whole site except the nav bar (has it's own CSS file)*/
+
+
+/*General layout tags*/
+html,body{
+  height: 100%;
+  
+}
+
+body { 
+
+	min-height: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	font-size: 20px;
+	
+	background-image: url("images/stars.jpg");
+	/*background-color: #696969;*/
+}
+
+/*heading/paragraph/form text tags*/
+
+h1,h2 {
+	font-family: "Times New Roman", Times, serif;
+	text-align: center; 
+}
+
+h1 { 	
+	color: turquoise;
+	/*color: #330033;*/
+}
+
+h2 { 	
+	color: yellow;
+}
+		
+form,p {
+	font-family: Georgia, serif;
+	font-size: 24px;
+	color: white;
+	text-align: center;
+}
+		
+p { 
+	margin: 0;
+	padding: 0;
+}
+
+.error { 
+	color:darkred;
+}
+
+.warning {
+	font-size:14px;
+	color:darkred;
+}
+
+
+/*Form Elements*/
+
+input[type=submit] {
+	padding:5px 15px;
+	color:white;
+	height: 33px;
+ 	background:#3366FF; 
+   border:2 white;
+ 	cursor: crosshair;
+ 	/*url('images/clap40.png'),*/
+	border-radius: 12px; 
+}
+
+.delete[type=submit] {
+	background:darkred;
+	color:white;
+}
+
+input[type="radio"] {
+  margin-right: 5;
+  margin-top: 20;
+}
+
+input[type=text],input[type=number] {
+	border-radius: 10px;
+	width: 30%;
+	height: 33px;
+}
+
+input[type=number] { //Used below to remove the arrows from number fields
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
+}
+
+
+/*Table Elements*/
+
+table, th, td {
+	font-family: Georgia, serif;
+  	border: 1px solid;
+  	color: white;
+  	text-align: center;
+}
+
+table { width: 100%; }
+
+

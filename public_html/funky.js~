@@ -1,0 +1,4 @@
+function bigButton (this) {
+
+	this.style.height = "64px";
+  	this.style.width = "64px";

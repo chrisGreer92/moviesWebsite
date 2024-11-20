@@ -1,0 +1,27 @@
+<HTML>
+  <HEAD>
+	<link href="form.css" rel="stylesheet">
+	<TITLE>Actors</TITLE>
+	<SCRIPT type="text/javascript" src="validate.js"></SCRIPT>
+	<SCRIPT> 
+	function validate_oct() { alert(); }
+	</SCRIPT>
+  </HEAD>
+  <BODY>
+  	<?php include "nav/nav_actors.php"; ?>
+    <H1>Actors Table</H1>
+    <H2>Search By Actor</H2>
+    <FORM id="act_search" action="act_search.php" onsubmit="validate_act(this)" method="post">
+    	ID <BR>
+      <INPUT type="text" maxlength="4" name="actID"> <BR>
+      Name <BR>
+      <INPUT type="text" maxlength="32" name="actName">
+      <INPUT type="submit" value="Search"> <BR>
+    </FORM>
+    	<?php 
+		$actID = "actID";
+		$actName = "actName";
+    	include "actor_table.php"; 
+    	?>
+  </BODY>
+</HTML>

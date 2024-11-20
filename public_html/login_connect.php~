@@ -1,0 +1,12 @@
+<?php
+	$db_host = 'mysql.cs.nott.ac.uk';
+	$db_user = 'psycg7_COMP1004';
+	$db_pass = 'PJSMPS';
+	$db_name = 'psycg7_COMP1004';
+	
+	$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+	if($con->connect_error){
+		die("Couldn't Connect to Database" . $con->connect_error);
+	}
+	echo "<BR> Connected Succesfully<BR>";
+?>

@@ -1,0 +1,18 @@
+<?php
+	require_once 'login.php';
+	
+	$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+	if($con->connect_error){
+		die("Couldn't Connect to Database" . $con->connect_error);
+	}
+	//echo "<BR> Connected Succesfully<BR>";
+	
+	$titles = "SELECT title FROM Movie ORDER BY title";
+	
+	$movie_titles = $con->query($titles);
+	
+	$genres = "SELECT genre FROM Movie WHERE genre <> '' ORDER BY genre";
+	
+	$movie_genres = $con->query($genres);
+	
+?>

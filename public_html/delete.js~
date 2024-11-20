@@ -1,0 +1,5 @@
+function delete(id){
+	conf = confirm("This will delete the entire record");
+	
+	if (conf) {
+}

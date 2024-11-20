@@ -1,0 +1,32 @@
+<?php
+	require_once 'login.php';
+	
+	$con = new mysqli($db_host, $db_user, $db_pass, $db_name);
+	if($con->connect_error){
+		die("Couldn't Connect to Database" . $con->connect_error);
+	}
+	echo "<BR> Connected Succesfully<BR>";
+	
+	$criteria = "SELECT * FROM Actor WHERE actID = $actID AND actName LIKE $actName ";
+	//echo "<h2> $criteria </h2>";
+	$search = $con->query($criteria);
+	//print_r($result);
+	echo "<table>
+				<tr>
+					<th>ID</th>
+					<th>Actor Name</th>
+				</tr>";
+			
+	$count = 1;
+	while ($row = $search->fetch_array(MYSQLI_ASSOC)){
+		echo "<tr>
+					<th>${row['actID']}</th>
+					<th>${row['actName']}</th>
+					<th><button name=\"${row['actID']}\" class=\"button_delete\"
+					onclick=\"delete_actor(\"${row['actID']}\")\">Delete</button></th>
+				</tr>";
+		$count +=1;
+	}
+	//echo "<tr><th>x</th><th>Form Goes Here<\th><th>x<\th></tr>"
+	echo "</table>";
+?>

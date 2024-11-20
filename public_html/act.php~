@@ -1,0 +1,4 @@
+if (isset($_POST['actID'])
+	$actID = fix_string($POST['actID']);
+if (isset($_POST['actName'])
+	$actName = fix_string($POST['actID']);

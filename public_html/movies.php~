@@ -1,0 +1,36 @@
+<HTML>
+  <HEAD>
+	<link href="form.css" rel="stylesheet">
+	<TITLE>Movies</TITLE>
+  </HEAD>
+  <BODY>
+  		<?php include "nav/nav_movies.php" ?>
+    <H1>PSYCG7's Movie DB</H1>
+    <H2 id="Funk" onclick="funk()" >Now with added Funkyness</H2>
+    <script> function funk(){
+    			document.getElementById('Funk').innerHTML = "Funk it Up";
+    			}
+    </script>
+    <FORM action="some.php">
+    	Search By Movie <BR>
+      <INPUT type="text" name="movie_search">
+      <INPUT type="submit" value="Search"> <BR> <BR>
+      Search By Actor <BR>
+      <INPUT type="text" name="actor_search">
+      <INPUT type="submit" value="Search"> <BR> <BR>
+      Add Movie <BR>
+      <INPUT type="text" name="movie_add">
+      <INPUT type="submit" value="Add"> <BR> <BR>
+      <BR>We do not want to submit this form just yet etc. <BR>
+    </FORM>
+    
+    <p><?php echo "<H1>Hello php World</H1>"; ?></p>
+    <H1>
+    	<?php 
+    		echo "Tabley" ;
+    		include "table.php" ;
+    		echo "Tabley" ;
+    	?>
+  </BODY>
+</HTML>
+
